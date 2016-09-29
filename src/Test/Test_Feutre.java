@@ -19,6 +19,7 @@ public class Test_Feutre {
     static Feutre monFeutre2;
     static Feutre monFeutre3;
     static Feutre monFeutre4;
+    static Feutre monFeutre5;
     static TableauBlanc monTableau;
     public static void main(String[] args) {
         // TODO code application logic here
@@ -32,8 +33,6 @@ public class Test_Feutre {
         monFeutre2.ecrire("Bonjour le monde Feutre 2");
         monFeutre.ecrire("Bonjour le monde 3! ");
         
-        monFeutre.ecrire("Feutre 1",monTableau);
-        monFeutre2.ecrire("Feutre 2",monTableau);
         
         monFeutre3 = new Feutre(100, "bleu",monTableau);
         monFeutre3.deboucher();
@@ -42,6 +41,10 @@ public class Test_Feutre {
         monFeutre4 = new Feutre(100, "bleu",monTableau);
         monFeutre4.deboucher();
         monFeutre4.ecrire("F4");
+        
+        monFeutre5 = new Feutre(100, "Rouge", monFeutre.getTableau());
+        monFeutre5.deboucher();
+        monFeutre5.ecrire("FF5");
     }
     
 }

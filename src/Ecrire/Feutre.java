@@ -75,32 +75,7 @@ public  class Feutre
         
     }	
     
-    public void ecrire(String texte, TableauBlanc tableau) {
-        
-        int limite_encre = encre.getNvEncre();
-        int long_chaine = texte.length();
-        
-        if((long_chaine < limite_encre) && !estBouche()){
-                tableau.afficher(texte);
-                tableau.afficher("\n");
-                encre.decNvEncre(long_chaine);
-        }else{
-            if(!estBouche() && long_chaine >0){
-                String tempo_chaine = "";
-                for(int i=0;i<limite_encre;i++ ){
-                    tempo_chaine += texte.charAt(i);
-                }
-                tableau.afficher(tempo_chaine);
-                tableau.afficher("\n");
-                encre.decNvEncre(tempo_chaine.length());
-                System.err.println("#### PLUS D\'ENCRE !");
-            }else{
-                System.err.println("#### DEBOUCHE LE FEUTRE !");
-            } 
-        }
-        System.err.println("!!!! Il reste : "+encre.getNvEncre()+" caractères dans mon reservoir");
-        
-    }
+ 
     
     private void afficher(String texte){
         tableau.afficher(texte);
@@ -108,6 +83,10 @@ public  class Feutre
     
     public Reservoir getEncre(){
         return encre;
+    }
+    
+    public TableauBlanc getTableau(){
+        return tableau;
     }
 }
 
