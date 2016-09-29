@@ -13,19 +13,15 @@ import afficher.TableauBlanc;
 public  class Feutre  
 { 
     private Boolean estBouche;
-    private TableauBlanc tableau;
+    private static TableauBlanc tableau = null;
     Reservoir encre;
         
     public Feutre(){
         estBouche = true;
         encre = new Reservoir();
-        tableau = new TableauBlanc("Tableau");
-    }
-    
-    public Feutre(int capacite, String couleur){
-        estBouche = true;
-        encre = new Reservoir(capacite, couleur);
-        tableau = new TableauBlanc("Tableau");
+        if(null == tableau){
+            tableau = new TableauBlanc("Tab");
+        }
     }
     
     public Feutre(int capacite, String couleur, TableauBlanc tab){
