@@ -1,18 +1,18 @@
 package afficher;
 
-import java.awt.*;// bibliothèque graphique originale
-import javax.swing.*;// bibliothèque graphique plus 'moderne' qui respecte les Design Pattern
+import java.awt.*;// bibliothï¿½que graphique originale
+import javax.swing.*;// bibliothï¿½que graphique plus 'moderne' qui respecte les Design Pattern
 
-public class FrmAffichageText {
+public class FrmAffichageText implements AffichageTxt{
    JFrame frmTableau;
    JTextArea txtTableau;
    JPanel pnlTableau;
    JScrollPane sclTableau;
 
    public FrmAffichageText(int hauteur, int largeur,int x, int y, String titre) {
- 	   //   fenêtre
+ 	   //   fenï¿½tre
 	   frmTableau = new JFrame(titre);
-	   //   taille par défaut
+	   //   taille par dï¿½faut
 	   //frmTableau.setSize(50, 50);
 	   //	 zone de texte
 	   txtTableau = new JTextArea(hauteur,largeur);
@@ -20,24 +20,28 @@ public class FrmAffichageText {
 	   sclTableau = new JScrollPane(txtTableau);
 	   //	 super container
 	   pnlTableau = new JPanel();
-	   //    permet d'ajouter les enfants les uns à la suite des autres
+	   //    permet d'ajouter les enfants les uns ï¿½ la suite des autres
        pnlTableau.setLayout(new FlowLayout());
        //    ajoute le container scl (ascenceur) au panel
        pnlTableau.add(sclTableau);
-       //    ajoute mon panel au centre de ma fenêtre
+       //    ajoute mon panel au centre de ma fenï¿½tre
        frmTableau.getContentPane().add(pnlTableau, FlowLayout.LEFT);
        //    sort si l'on clique sur fermeture
        frmTableau.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-       //    interdit d'écrire dedans car ne donne pas le focus
+       //    interdit d'ï¿½crire dedans car ne donne pas le focus
        txtTableau.setFocusable(false);
-       //     réorganise la fenêtre en dimension
+       //     rï¿½organise la fenï¿½tre en dimension
        frmTableau.pack();
-       //    ajuste la position dans l'écran
+       //    ajuste la position dans l'ï¿½cran
        frmTableau.setLocation(x,y);
-       //        affiche la fenêtre
+       //        affiche la fenï¿½tre
        frmTableau.setVisible(true);
    }
 
+   public JTextArea getTxtTableau(){
+       return txtTableau;
+   }
+   
    public FrmAffichageText() {
 	   this(10,10,0,0,"Sans Titre");
    }
@@ -57,10 +61,8 @@ public class FrmAffichageText {
 	   return frmTableau;
    }
 
-   public void setAffichage(char texte){
-	   txtTableau.append(Character.toString(texte));
-   }
-
+ 
+   @Override
    public void setAffichage(String texte){
 	   txtTableau.append(texte);
    }
