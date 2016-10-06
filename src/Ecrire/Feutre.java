@@ -9,6 +9,7 @@ package Ecrire;
 
 import afficher.TableauBlanc;
 import afficher.Erreur;
+import java.util.Objects;
 
 
 public  class Feutre  
@@ -16,7 +17,7 @@ public  class Feutre
     private Boolean estBouche;
     private static TableauBlanc tableau = null;
     private static Erreur sortieErr = null;
-    Reservoir encre;
+    private Reservoir encre;
         
     public Feutre(){
         estBouche = true;
@@ -107,6 +108,64 @@ public  class Feutre
     public Erreur getErreur(){
         return sortieErr;
     }
+
+    public void getInfoFeutre(){
+        afficher(toString());
+        System.out.println(toString());
+        erreur(toString());
+    }
+     
+    @Override
+    public String toString() {
+       String xml;
+       
+       xml = "<Feutre>" +"\n"
+               + "   <Reservoir>" +"\n"
+                    + "       " + encre.toString() +"\n"
+               + "   </Reservoir>" +"\n"
+               + "   <EstBouche>" +"\n"
+                    + "       " + estBouche.toString()+"\n"
+               + "   </EstBouche>" +"\n"
+               + "   <Tableau>" +"\n"
+                    + "       " + tableau.toString()+"\n"
+               + "   </Tableau>" +"\n"
+            + "</Feutre>";
+       return xml;
+    }
+    
+    
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 79 * hash + Objects.hashCode(this.estBouche);
+        hash = 79 * hash + Objects.hashCode(this.encre);
+        return hash;
+    }
+
+    
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Feutre other = (Feutre) obj;
+        if (!Objects.equals(this.estBouche, other.estBouche)) {
+            return false;
+        }
+        if (!Objects.equals(this.encre, other.encre)) {
+            return false;
+        }
+        return true;
+    }
+
+    
+    
+    
 }
 
 
