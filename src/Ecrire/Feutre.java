@@ -8,12 +8,14 @@
 package Ecrire;
 
 import afficher.TableauBlanc;
+import afficher.Erreur;
 
 
 public  class Feutre  
 { 
     private Boolean estBouche;
     private static TableauBlanc tableau = null;
+    private static Erreur sortieErr = null;
     Reservoir encre;
         
     public Feutre(){
@@ -21,6 +23,9 @@ public  class Feutre
         encre = new Reservoir();
         if(null == tableau){
             tableau = new TableauBlanc("Tab");
+        }
+        if(null == sortieErr){
+            sortieErr = new Erreur("Erreur");
         }
     }
     
@@ -30,18 +35,27 @@ public  class Feutre
         tableau = tab;
     }
     
+    public Feutre(int capacite, String couleur, TableauBlanc tab, Erreur err){
+        estBouche = true;
+        encre = new Reservoir(capacite, couleur);
+        tableau = tab;
+        sortieErr = err;
+    }
+    
     public boolean estBouche() {
         return estBouche;
     }
 	
     public void boucher() {
         estBouche = true;
-        System.err.println("!!!! Le feutre est bouché");
+        erreur("!!!! Le feutre est bouché");
+        erreur("\n");
     }
 	
     public void deboucher() {
         estBouche = false;
-        System.err.println("!!!! Le feutre est débouché");
+        erreur("!!!! Le feutre est débouché");
+        erreur("\n");
     }
 	
     public void ecrire(String texte) {
@@ -62,15 +76,20 @@ public  class Feutre
                 afficher(tempo_chaine);
                 afficher("\n");
                 encre.decNvEncre(tempo_chaine.length());
-                System.err.println("#### PLUS D\'ENCRE !");
+                erreur("#### PLUS D\'ENCRE !");
+                erreur("\n");
             }else{
-                System.err.println("#### DEBOUCHE LE FEUTRE !");
+                erreur("#### DEBOUCHE LE FEUTRE !");
+                erreur("\n");
             } 
         }
-        System.err.println("!!!! Il reste : "+encre.getNvEncre()+" caractères dans mon reservoir");
-        
+        erreur("!!!! Il reste : "+encre.getNvEncre()+" caractères dans mon reservoir");
+        erreur("\n");
     }	
     
+    private void erreur(String texte){
+        sortieErr.afficher(texte);
+    }
  
     
     private void afficher(String texte){
@@ -83,6 +102,10 @@ public  class Feutre
     
     public TableauBlanc getTableau(){
         return tableau;
+    }
+    
+    public Erreur getErreur(){
+        return sortieErr;
     }
 }
 

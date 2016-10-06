@@ -16,10 +16,7 @@ public class Console implements AffichageTxt{
         System.out.println(texte);
     }
 
-    @Override
-    public void setAffichage(char texte) {
-        System.out.print(texte);
-    }
+    
     
     
             

@@ -1,9 +1,10 @@
 package afficher;
 
-public class TableauBlanc {
+public class TableauBlanc  {
 		
 	private String contenu;
-	private FrmAffichageText fenetre;
+        private boolean estGraphique  = true;
+	private AffichageTxt fenetre;
 	
 	public TableauBlanc(String titre) {
 		this(20,100,0,0,titre);
@@ -11,7 +12,8 @@ public class TableauBlanc {
 	
 	public TableauBlanc(int hauteur, int largeur, int x, int y, String titre) {
 		contenu = new String();
-		fenetre = new FrmAffichageText(hauteur,largeur,x,y,titre);
+                fenetre = new FrmAffichageText(hauteur,largeur,x,y,titre);
+                
 	}	
 	
 	public void afficher(String texte){

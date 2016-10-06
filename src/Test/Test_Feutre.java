@@ -5,6 +5,7 @@
  */
 package Test;
 import Ecrire.Feutre;
+import afficher.Erreur;
 import afficher.TableauBlanc;
 /**
  *
@@ -25,7 +26,6 @@ public class Test_Feutre {
         // TODO code application logic here
         monFeutre = new Feutre();
         monFeutre2 = new Feutre();
-        monTableau = new TableauBlanc("Tableau colla");
         monFeutre2.deboucher();
         monFeutre.ecrire("Bonjour le monde 1");
         monFeutre.deboucher();
@@ -34,17 +34,13 @@ public class Test_Feutre {
         monFeutre.ecrire("Bonjour le monde 3! ");
         
         
-        monFeutre3 = new Feutre(100, "bleu",monTableau);
-        monFeutre3.deboucher();
-        monFeutre3.ecrire("F3");
-        
-        monFeutre4 = new Feutre(100, "bleu",monTableau);
-        monFeutre4.deboucher();
-        monFeutre4.ecrire("F4");
-        
-        monFeutre5 = new Feutre(100, "Rouge", monFeutre.getTableau());
+        monFeutre5 = new Feutre(100, "Rouge", monFeutre.getTableau(), monFeutre.getErreur());
         monFeutre5.deboucher();
-        monFeutre5.ecrire("FF5");
+        monFeutre5.ecrire("FF15");
+        /*
+        monFeutre5 = new Feutre(100, "Rouge", new TableauBlanc("test"), new Erreur("testErr"));
+        monFeutre5.deboucher();
+        monFeutre5.ecrire("FF14");*/
     }
     
 }
