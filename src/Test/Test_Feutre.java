@@ -37,7 +37,7 @@ public class Test_Feutre {
         monFeutre5 = new Feutre(100, "Rouge", monFeutre.getTableau(), monFeutre.getErreur());
         monFeutre5.deboucher();
         monFeutre5.ecrire("FF15");
-        monFeutre.toString();
+        //monFeutre.ecrire(monFeutre.toString());
         monFeutre.getInfoFeutre();
         /*
         monFeutre5 = new Feutre(100, "Rouge", new TableauBlanc("test"), new Erreur("testErr"));
